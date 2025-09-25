@@ -1,0 +1,5 @@
+call "C:\WATCOM\owsetenv.bat"
+wcc -4 -d3 -s -wx -ms -zl -zq -fo=BUILD\KERNEL.OBJ SRC\KERNEL\MAIN.C
+nasm SRC\KERNEL\MAIN.ASM -f obj -o BUILD\KERNELASM.OBJ
+
+wlink NAME BUILD\KERNEL.BIN FILE { BUILD\KERNELASM.OBJ BUILD\KERNEL.OBJ  } @linker.lnk

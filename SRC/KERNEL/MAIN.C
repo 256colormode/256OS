@@ -18,15 +18,15 @@ void GFX_INIT() {
 }
 
 void GFX_PUT_PIXEL(int x, int y, UINT8 color) {
-    offset = (y<<8) + (y<<6) + x;
+    unsigned short offset = (y<<8) + (y<<6) + x;
     VGA[offset] = color;
 }
 
-void main() {
+void _cdecl cmain_() {
     GFX_INIT();
 
     while (1)
     {
-        GFX_PUT_PIXEL(100, 100, 4);
+        GFX_PUT_PIXEL(100, 100, 10);
     }
 }
