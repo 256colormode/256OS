@@ -1,12 +1,22 @@
-typedef signed __int8		SINT8;
-typedef unsigned __int8		UINT8;
-typedef signed __int16		SINT16;
-typedef unsigned __int16	UINT16;
-typedef signed __int32		SINT32;
-typedef unsigned __int32	UINT32;
+#include <i86.h>
+#include "IMPORTANT.H"
+#include "STDIO.H"
 
 UINT8 far *VGA;
 UINT8 far *VGA_BACKBUFFER;
+
+typedef struct SPRITE
+{
+    SINT16 w, h;
+    UINT16 x, y;
+    UINT8 *sprite_data;
+} SPRITE;
+
+UINT8 sprite_data[2 * 1] = {
+    4,4
+};
+
+SPRITE sprite;
 
 void GFX_INIT() {
     __asm {
@@ -14,7 +24,7 @@ void GFX_INIT() {
         mov ah, 0
         int 10h
     }
-    VGA = (unsigned char far*)0xA000;
+    VGA = (UINT8 __far *)MK_FP(0xA000, 0x0000);
 }
 
 void GFX_PUT_PIXEL(int x, int y, UINT8 color) {
@@ -22,11 +32,27 @@ void GFX_PUT_PIXEL(int x, int y, UINT8 color) {
     VGA[offset] = color;
 }
 
+void GFX_DRAW(SPRITE sprite) {
+    int i;
+    
+    for (i = 0; i < sprite.w; i++)
+    {
+        UINT8 clr = sprite.sprite_data[i];
+        GFX_PUT_PIXEL(sprite.x + i, sprite.y, clr);
+    }
+    
+}
+
 void _cdecl cmain_() {
+    sprite.w = 2;
+    sprite.h = 1;
+    sprite.x = 100;
+    sprite.y = 100;
+    sprite.sprite_data = &sprite_data;
     GFX_INIT();
 
     while (1)
     {
-        GFX_PUT_PIXEL(100, 100, 10);
+        GFX_PUT_PIXEL(100, 100, 52);
     }
 }

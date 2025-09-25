@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:\\WATCOM\\H",
+                "C:\\WATCOM\\H\\DOS",
+                "C:\\devkitPro\\libogc\\include",
+                "C:\\devkitPro\\devkitPPC\\lib\\gcc\\powerpc-eabi\\14.2.0\\include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ]
+        }
+    ],
+    "version": 4
+}

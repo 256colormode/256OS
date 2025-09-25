@@ -1,23 +1,55 @@
-bits 16
+[bits 16]
+[extern _cmain_]
 
-section _ENTRY class=CODE
-
-extern _cmain_
 global entry
 
+section stack stack
+    resb 16384
+stack_top:
+
+section _ENTRY code
 entry:
     cli
-    ; setup stack
-    mov ax, ds
+    xor ax, ax
+    mov ds, ax
+    mov es, ax
+
+    ; set stack segment to same as code / kernel segment
+    push cs
+    pop ax        ; ax = CS
     mov ss, ax
-    mov sp, 0
-    mov bp, sp
+    mov sp, stack_top
+
     sti
+    
+    mov ah, 0x0e
 
-    ; expect boot drive in dl, send it as argument to cstart function
-    xor dh, dh
-    push dx
-    call _cmain_
-
-    cli
-    hlt
+    mov al, 'h'
+    int 0x10
+    mov al, 'e'
+    int 0x10
+    mov al, 'l'
+    int 0x10
+    mov al, 'l'
+    int 0x10
+    mov al, 'o'
+    int 0x10
+    mov al, ' '
+    int 0x10
+    mov al, 'w'
+    int 0x10
+    mov al, 'o'
+    int 0x10
+    mov al, 'r'
+    int 0x10
+    mov al, 'l'
+    int 0x10
+    mov al, 'd'
+    int 0x10
+    mov al, 0x0A ; line feed
+    int 0x10
+    mov al, 0x0D ; carriage return
+    int 0x10
+    
+    jmp _cmain_
+    jmp $

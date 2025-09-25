@@ -5,11 +5,6 @@
 xor ax, ax
 mov ds, ax
 
-cli
-mov ss, ax
-mov sp, 0x7c00
-sti
-
 mov ah, 0x0e
 
 mov al, 'L'
@@ -57,7 +52,7 @@ reset:
 
 floppy:
     mov ah,0x2
-    mov al,0x1
+    mov al, 33
     mov ch,0x0
     mov cl,0x2
     mov dh,0x0

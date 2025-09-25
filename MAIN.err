@@ -1,1 +1,3 @@
-SRC\KERNEL\MAIN.C(35): Warning! W138: No newline at end of file
+SRC\KERNEL\IMPORTANT.H(6): Warning! W138: No newline at end of file
+SRC\KERNEL\STDIO.H(1): Warning! W138: No newline at end of file
+SRC\KERNEL\MAIN.C(61): Warning! W138: No newline at end of file
