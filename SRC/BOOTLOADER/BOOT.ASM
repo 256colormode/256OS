@@ -52,7 +52,7 @@ reset:
 
 floppy:
     mov ah,0x2
-    mov al, 33
+    mov al, 34
     mov ch,0x0
     mov cl,0x2
     mov dh,0x0

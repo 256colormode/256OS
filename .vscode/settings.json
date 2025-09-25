@@ -2,6 +2,8 @@
     "files.associations": {
         "MAIN.C": "cpp",
         "cstdio": "cpp",
-        "STDIO.C": "cpp"
+        "STDIO.C": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp"
     }
 }
