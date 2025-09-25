@@ -43,7 +43,7 @@ void GFX_DRAW(SPRITE sprite) {
     
 }
 
-void _cdecl cmain_() {
+void _cdecl k_main() {
     sprite.w = 2;
     sprite.h = 1;
     sprite.x = 100;

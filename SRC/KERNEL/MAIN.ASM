@@ -1,5 +1,5 @@
 [bits 16]
-[extern _cmain_]
+[extern _k_main]
 
 global entry
 
@@ -9,19 +9,20 @@ stack_top:
 
 section _ENTRY code
 entry:
-    cli
+    ; setup the stack segment
+    cli ; disable interrupts so that they wouldn't fuck up our stack segment while mofifying it
     xor ax, ax
     mov ds, ax
     mov es, ax
-
-    ; set stack segment to same as code / kernel segment
+    
     push cs
-    pop ax        ; ax = CS
+    pop ax
     mov ss, ax
     mov sp, stack_top
 
-    sti
-    
+    sti ; enable back interrupts
+
+    ; printing hello world so that we can know if the kernel has been loaded
     mov ah, 0x0e
 
     mov al, 'h'
@@ -46,10 +47,11 @@ entry:
     int 0x10
     mov al, 'd'
     int 0x10
-    mov al, 0x0A ; line feed
+    mov al, 0x0A
     int 0x10
-    mov al, 0x0D ; carriage return
+    mov al, 0x0D
     int 0x10
     
-    jmp _cmain_
+    ; loads our c code
+    jmp _k_main
     jmp $
