@@ -1,7 +1,5 @@
-FORMAT RAW BIN
+FORMAT DOS COM
 OPTION QUIET,
        NODEFAULTLIBS,
-       START=entry,
-       VERBOSE,
-       OFFSET=0,
-       STACK=0x4000
+       START=__CMain,
+       STACK=0x1000

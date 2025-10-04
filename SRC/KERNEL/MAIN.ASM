@@ -1,27 +1,27 @@
-[bits 16]
-[extern _k_main]
+bits 16
 
-global entry
+global _small_code_
+extern KERNEL_
 
-section stack stack
-    resb 16384
+segment _TEXT use16 class=CODE         	; code segment (16bit code)
+_small_code_:                          	; watcom linker needs this label
+..start:
+
+call KERNEL_                       	; hand over execution to the kernel
+jmp $                                	; fail safe
+
+segment _STACK STACK class=STACK      	; stack segment 8KiB in size
+resb 8 * 1024
 stack_top:
 
-section _ENTRY code
+BOOT_ORIGIN_SEG:    	equ	0x7c0
+
 entry:
-    ; setup the stack segment
-    cli ; disable interrupts so that they wouldn't fuck up our stack segment while mofifying it
-    xor ax, ax
+    mov ax, BOOT_ORIGIN_SEG            	; finally we can set these to get the full 64KiB of code, data and stack experience
     mov ds, ax
-    mov es, ax
-    
-    push cs
-    pop ax
     mov ss, ax
     mov sp, stack_top
-
-    sti ; enable back interrupts
-
+    
     ; printing hello world so that we can know if the kernel has been loaded
     mov ah, 0x0e
 
@@ -53,5 +53,5 @@ entry:
     int 0x10
     
     ; loads our c code
-    jmp _k_main
+    call KERNEL_
     jmp $

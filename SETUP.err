@@ -1,0 +1,17 @@
+SRC\KERNEL\SETUP.ASM(15): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(16): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(17): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(18): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(19): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(21): Error! E306: Label is defined outside segment
+SRC\KERNEL\SETUP.ASM(22): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(23): Error! E306: Label is defined outside segment
+SRC\KERNEL\SETUP.ASM(24): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(26): Error! E306: Label is defined outside segment
+SRC\KERNEL\SETUP.ASM(27): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(28): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(30): Error! E306: Label is defined outside segment
+SRC\KERNEL\SETUP.ASM(32): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(34): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(35): Error! E225: Data emitted with no segment
+SRC\KERNEL\SETUP.ASM(35): Error! E249: End directive required at end of file

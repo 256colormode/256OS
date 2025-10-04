@@ -1,0 +1,75 @@
+Open Watcom Linker Version 2.0 beta May 23 2025 02:42:52 (64-bit)
+Copyright (c) 2002-2025 The Open Watcom Contributors. All Rights Reserved.
+Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
+Created on:       25/10/04 22:42:29
+Executable Image: BUILD\OS.BIN
+creating a RAW Binary Image executable
+
+
+                        +------------+
+                        |   Groups   |
+                        +------------+
+
+Group                           Address              Size
+=====                           =======              ====
+
+DGROUP                          0000242a             00000084
+
+
+
+                        +--------------+
+                        |   Segments   |
+                        +--------------+
+
+Segment                Class          Group          Address         Size
+=======                =====          =====          =======         ====
+
+_TEXT                  CODE           AUTO           00000000        00000429
+_STACK                 STACK          AUTO           00000429        00002000
+CONST                  DATA           DGROUP         0000242a        00000029
+CONST2                 DATA           DGROUP         00002454        00000000
+_DATA                  DATA           DGROUP         00002454        0000004a
+_BSS                   BSS            DGROUP         0000249e        00000010
+
+
+                        +----------------+
+                        |   Memory Map   |
+                        +----------------+
+
+* = unreferenced symbol
++ = symbol only referenced locally
+
+Address        Symbol
+=======        ======
+
+Module: BUILD\BOOT.O(SRC\BOOTLOADER\BOOT.ASM)
+00000000       _small_code_
+Module: BUILD\KERNEL.O(MAIN)
+00000206*      GFX_INIT_
+00000222+      GFX_PUT_PIXEL_
+00000240*      GFX_DRAW_SPRITE_
+00000278       KERNEL_
+00002454*      _sprite_data
+00002494*      _KEY_ARR_RIGHT
+00002496*      _KEY_ARR_LEFT
+00002498*      _KEY_ARR_UP
+0000249a*      _KEY_ARR_DOWN
+0000249c*      _KEY_ESC
+0000249e+      _VGA
+000024a2*      _sprite
+000024ac+      _offset
+Module: BUILD\STDIO.O(STDIO)
+00000285*      strlen_
+00000296+      print_string_
+000002b3+      print_char_
+00000398       printf_
+
+
+                        +-----------------------+
+                        |   Linker Statistics   |
+                        +-----------------------+
+
+Stack size:  2000 (8192.)
+Memory size:  24ae (9390.)
+Entry point address: 00000000
+Link time: 00:00.03

@@ -1,10 +1,9 @@
-wcc -4 -d3 -s -wx -zl -zq -fo=BUILD\KERNEL.OBJ SRC\KERNEL\MAIN.C
-wcc -4 -d3 -s -wx -zl -zq -fo=BUILD\STDIO.OBJ SRC\KERNEL\STDIO.C
-nasm SRC\KERNEL\MAIN.ASM -f obj -o BUILD\KERNELASM.OBJ
-nasm SRC\BOOTLOADER\BOOT.ASM -f bin -o BUILD\BOOT.BIN
+call "C:\WATCOM\owsetenv.bat"
 
-wlink NAME BUILD\KERNEL.BIN FILE { BUILD\KERNELASM.OBJ BUILD\KERNEL.OBJ BUILD\STDIO.OBJ } @linker.lnk
+nasm -f obj SRC\BOOTLOADER\BOOT.ASM -o BUILD\BOOT.O
+owcc -c -bdos -fno-stack-check -Os -s -march=i86 -o BUILD\KERNEL.O SRC\KERNEL\MAIN.C
+owcc -c -bdos -fno-stack-check -Os -s -march=i86 -o BUILD\STDIO.O SRC\KERNEL\STDIO.C
 
-dd if=BUILD\BOOT.BIN of=floppy.img
+wlink form raw bin file BUILD\BOOT.O, BUILD\KERNEL.O, BUILD\STDIO.O name BUILD\OS.BIN OPTION MAP=KERNEL.MAP
 
-dd if=BUILD\KERNEL.BIN of=floppy.img bs=512 seek=1 count=34
+dd if=BUILD\OS.BIN of=floppy.img conv=notrunc
