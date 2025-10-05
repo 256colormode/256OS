@@ -1,6 +1,0 @@
-SRC\KERNEL\IMPORTANT.H(6): Warning! W138: No newline at end of file
-SRC\KERNEL\STDIO.H(2): Warning! W138: No newline at end of file
-SRC\KERNEL\MAIN.C(101): Warning! W112: Parameter 1: Pointer truncated
-SRC\KERNEL\MAIN.C(101): Note! I2003: source conversion type is 'unsigned char __far *'
-SRC\KERNEL\MAIN.C(101): Note! I2004: target conversion type is 'void *'
-SRC\KERNEL\MAIN.C(110): Warning! W138: No newline at end of file

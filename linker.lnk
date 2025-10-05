@@ -1,5 +1,0 @@
-FORMAT DOS COM
-OPTION QUIET,
-       NODEFAULTLIBS,
-       START=__CMain,
-       STACK=0x1000
