@@ -24,6 +24,14 @@ void print_string(const char* string) {
     while (*string)
     {
         print_char(*string++);
+		if (*string == '\n')
+		{
+			__asm {
+				mov al, 0x0D	// moves the cursor to the beginning of the line
+        		int 0x10	// calls int 10h interrupt
+			}
+		}
+		
     }
 }
 
@@ -44,7 +52,7 @@ static void print_hex(UINT16 i)
 	}
 }
 
-static void print_int(__int16 i)
+static void print_int(UINT16 i)
 {
 	int f, d;
 	if(i < 0 && i != 0) {
@@ -121,6 +129,13 @@ void printf(const char *s, ...)
 			default:
 				print_char(*s);
 				break;
+			}
+		}
+		if (*s == '\n')
+		{
+			__asm {
+				mov al, 0x0D	// moves the cursor to the beginning of the line
+        		int 0x10	// calls int 10h interrupt
 			}
 		}
 		s++;

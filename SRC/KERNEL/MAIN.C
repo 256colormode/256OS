@@ -58,6 +58,7 @@ void GFX_DRAW_SPRITE(SPRITE *sprite) {
 }
 
 int KERNEL() {
-    printf("The Kernel has been successfully loaded!");
+    printf("The Kernel has been successfully loaded!\n");
+    printf("256OS>");
     return 0;
 }
