@@ -10,6 +10,8 @@
         "WAIT.H": "cpp",
         "LOADER.C": "cpp",
         "TIME.C": "cpp",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "INPUT.C": "cpp",
+        "GFX.C": "cpp"
     }
 }
