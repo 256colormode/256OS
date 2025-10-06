@@ -2,6 +2,15 @@
 #include "IMPORTANT.H"
 #include <stdarg.h>
 
+void strcpy(char dest[], const char source[])
+{
+    int i = 0;
+    while ((dest[i] = source[i]) != '\0')
+    {
+        i++;
+    } 
+}
+
 UINT8 strlen(const char* string) {
     UINT8 len = 0;
     while (*string != '\0')
