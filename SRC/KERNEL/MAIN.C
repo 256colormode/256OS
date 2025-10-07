@@ -5,19 +5,11 @@
 #include "INPUT.H"
 #include "STDIO.H"
 
-void SET_CURSOR_POSX(UINT8 col) {
+void SET_CURSOR_POS(UINT8 col, UINT8 row) {
     __asm {
         mov ah, 02h
         mov bh, 00h
         mov dl, col
-        INT 10h
-    }
-}
-
-void SET_CURSOR_POSY(UINT8 row) {
-    __asm {
-        mov ah, 02h
-        mov bh, 00h
         mov dh, row
         INT 10h
     }
@@ -69,23 +61,36 @@ int KERNEL() {
         UINT8 KEY = READ_SCANCODE();
         UINT8 CURSORPOSX = READ_CURSOR_POSX();
         UINT8 CURSORPOSY = READ_CURSOR_POSY();
+
         switch (KEY)
         {
             case '\r':
+                buffer[i] = '\0';
+                
                 printf("\n");
+                if (strcmp(buffer, "vga") == 0)
+                {
+                    printf("vga!\n");
+                }
                 printf("256OS>");
+                i = 0;
+                buffer == 0;
                 break;
             case 0x08:
-                printf("\b");
-                print_char(' ');
-                CURSORPOSX--;
-                SET_CURSOR_POSX(CURSORPOSX);
-                SET_CURSOR_POSY(CURSORPOSY);
+                if (CURSORPOSX >= 7)
+                {
+                    i--;
+                    buffer[i] = ' ';
+                    printf("\b");
+                    print_char(' ');
+                    CURSORPOSX--;
+                    SET_CURSOR_POS(CURSORPOSX, CURSORPOSY);
+                }   
                 break;
             default:
                 buffer[i] = KEY;
-                buffer[i]++;
                 print_char(buffer[i]);
+                i++;
                 break;
         }
     }

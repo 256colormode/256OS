@@ -12,6 +12,9 @@
         "TIME.C": "cpp",
         "stdlib.h": "c",
         "INPUT.C": "cpp",
-        "GFX.C": "cpp"
+        "GFX.C": "cpp",
+        "cstdint": "cpp",
+        "cstddef": "cpp",
+        "ctime": "cpp"
     }
 }
