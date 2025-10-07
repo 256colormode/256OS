@@ -20,17 +20,6 @@ void strcpy(char dest[], const char source[])
         i++;
     } 
 }
-
-UINT8 strlen(const char* string) {
-    UINT8 len = 0;
-    while (*string != '\0')
-    {
-        len++;
-        string++;
-    }
-    return len;
-}
-
 void print_char(char c) {
     __asm {
         mov ah, 0x0e

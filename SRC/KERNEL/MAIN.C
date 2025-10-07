@@ -1,9 +1,9 @@
 #include "IMPORTANT.H"
 #include <i86.h>
 
-#include "GFX.H"
 #include "INPUT.H"
 #include "STDIO.H"
+#include "VGADEMO.H"
 
 void SET_CURSOR_POS(UINT8 col, UINT8 row) {
     __asm {
@@ -71,6 +71,7 @@ int KERNEL() {
                 if (strcmp(buffer, "vga") == 0)
                 {
                     printf("vga!\n");
+                    VGAMAIN();
                 }
                 printf("256OS>");
                 i = 0;
